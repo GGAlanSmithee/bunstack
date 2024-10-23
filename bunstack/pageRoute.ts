@@ -8,7 +8,7 @@ const generatedPagesFolder = `${process.cwd()}/bunstack/.generated/pages`
 
 const codeInput = (path: string, component: string) =>
   `
-import { hydrateRoot } from "react-dom/client"
+import { hydrateRoot } from "https://esm.sh/react-dom@18.2.0/client"
 import ${component} from "${path}";
 
 hydrateRoot(document.getElementById("root")!, <${component} />);
@@ -68,7 +68,10 @@ export const pageRoute = async ({
       return new Response("Not Found!", { status: 404 })
     }
 
-    return new Response(code, {
+    // Externalize react/jsx-dev-runtime, because bun does not handle it do: investigate
+    const externalizedCode = code.replaceAll("react/jsx-dev-runtime", "https://esm.sh/react@18.2.0/jsx-dev-runtime")
+
+    return new Response(externalizedCode, {
       headers: {
         "Content-Type": "application/javascript",
         "Cache-Control": isDev ? "no-cache" : `public, max-age=${oneWeek}`,
