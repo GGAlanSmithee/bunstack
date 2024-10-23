@@ -1,0 +1,5 @@
+import { createRoot } from "react-dom/client"
+import {{PAGE}} from "../pages/${page}";
+
+const root = createRoot(document.getElementById("app")!);
+root.render(<${page} />);`.replace(/\n/g, "")

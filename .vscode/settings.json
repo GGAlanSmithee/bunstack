@@ -1,0 +1,20 @@
+{
+  "cSpell.words": ["bunstack"],
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "bunstack/.generated": true,
+    "bunstack/.dist": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "bunstack/.generated": true,
+    "bunstack/.dist": true
+  }
+}
